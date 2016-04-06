@@ -1,6 +1,13 @@
 
 User.destroy_all
-user = User.create(name: 'ufadiz', password: 'test123', email: 'ufadiz@gmail.com', role: 'admin')
+user = User.create(
+  name: 'ufadiz', 
+  password: 'test123', 
+  email: 'ufadiz@gmail.com', 
+  role: 'admin',
+  confirmation_sent_at: Time.now.yesterday,
+  confirmed_at: Time.now.yesterday
+  )
 
 Blog.destroy_all
 Blog.create([

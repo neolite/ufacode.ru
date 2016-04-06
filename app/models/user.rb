@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   validates :name,  presence: true
   validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
 
+  accepts_nested_attributes_for :socials, reject_if: :all_blank
+
   enum sex: { male: 1, female: 2 }
 
   def full_name

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @social = Social.create(name: :twitter)
+    #@social = Social.create(name: :twitter)
     # authorize! :update, @user
   end
 
@@ -74,6 +74,7 @@ class UsersController < ApplicationController
 
   def user_params
     accessible = [:name, :email, :image, :sex, :description, :wallpapers] # extend with your own params
+    accessible << [socials_attributes: [:id, :name, :value]]
     accessible << [:password, :password_confirmation] unless params[:user][:password].blank?
     params.require(:user).permit(accessible)
   end
